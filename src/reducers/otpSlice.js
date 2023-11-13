@@ -22,13 +22,13 @@ export const otpSlice = createSlice({
 
 export const { generateOTPSuccess, verifyOTPSuccess } = otpSlice.actions;
 
-export const generateOTP = (email, type) => async (dispatch) => {
+export const generateOTP = (data) => async (dispatch) => {
   try {
     const requestBody = {
-      email: email,
-      type: type,
-      organization: "MyApp",
-      subject: "OTP Verification",
+      email: data.email,
+      type: data.type,
+      organization: data.organization,
+      subject: data.subject,
     };
 
     const response = await axios.post(
@@ -37,14 +37,16 @@ export const generateOTP = (email, type) => async (dispatch) => {
     );
     dispatch(generateOTPSuccess(response.data.message));
 } catch (e) {
+    console.log(e);
     dispatch(generateOTPSuccess(e.response.data.error));
   }
 };
 
-export const verifyOTP = (userInput) => async (dispatch) => {
+export const verifyOTP = (email, userInput) => async (dispatch) => {
   try {
+    console.log(email, userInput);
     const requestBody = {
-      email: "aky11052003@gmail.com",
+      email: email,
       otp: userInput,
     };
 
@@ -52,7 +54,8 @@ export const verifyOTP = (userInput) => async (dispatch) => {
       "https://otp-service-beta.vercel.app/api/otp/verify",
       requestBody
     );
-    dispatch(generateOTPSuccess(response.data.message));
+    dispatch(verifyOTPSuccess(response.data.message));
+    console.log(response);
   } catch (e) {
     console.error("Error verifying OTP:", e);
     dispatch(verifyOTPSuccess(e.response.data.error));

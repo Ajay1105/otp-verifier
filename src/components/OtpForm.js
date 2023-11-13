@@ -9,25 +9,124 @@ const OtpForm = () => {
     (state) => state.otp.verificationStatus
   );
 
+  const [data, setData] = useState({
+    email: "",
+    type: "",
+    organization: "",
+    subject: "",
+  });
   const [userInput, setUserInput] = useState("");
+
+  const areAllFieldsFilled = () => {
+    for (const key in data) {
+      if (data[key] === "") {
+        return false;
+      }
+    }
+    return true;
+  };
 
   const handleGenerateOTP = (email, type) => {
     dispatch(generateOTP(email, type));
   };
 
   const handleVerifyOTP = () => {
-    dispatch(verifyOTP(userInput));
+    if(userInput === ""){
+        alert("Enter OTP");
+    }else{
+        dispatch(verifyOTP(data.email, userInput));
+    }
+  };
+
+  const handleChange = (e) => {
+    setData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
   };
 
   return (
     <div>
       <button
         onClick={() => {
-          handleGenerateOTP("aky11052003@gmail.com", "numeric");
+          if (areAllFieldsFilled()) {
+            handleGenerateOTP(data);
+          } else {
+            alert("All fields are required");
+          }
         }}
       >
         Generate OTP
       </button>
+      <button
+        onClick={() => {
+          if (areAllFieldsFilled()) {
+            console.log(data);
+          } else {
+            alert("All fields are required");
+          }
+        }}
+      >
+        see Data
+      </button>
+      <input
+        type="text"
+        name="email"
+        value={data.email}
+        onChange={handleChange}
+        placeholder="Enter email"
+      />
+      <input
+        type="text"
+        name="organization"
+        value={data.organization}
+        onChange={handleChange}
+        placeholder="Enter Organization"
+      />
+      <input
+        type="text"
+        name="subject"
+        value={data.subject}
+        onChange={handleChange}
+        placeholder="Enter Subject"
+      />
+      <hr />
+
+      <label>
+        <input
+          type="radio"
+          value="numeric"
+          checked={data.type === "numeric"}
+          onChange={handleChange}
+          name="type"
+        />
+        Numeric
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="alphabet"
+          checked={data.type === "alphabet"}
+          onChange={handleChange}
+          name="type"
+        />
+        Alphabet
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="alphanumeric"
+          checked={data.type === "alphanumeric"}
+          onChange={handleChange}
+          name="type"
+        />
+        Alphanumeric
+      </label>
+
+      <hr />
+
       {generatedOTP && <p>Generated OTP: {generatedOTP}</p>}
       <input
         type="text"
