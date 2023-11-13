@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
   generatedOTP: null,
-  verificationStatus: "unverified",
+  verificationStatus: null,
 };
 
 export const otpSlice = createSlice({
