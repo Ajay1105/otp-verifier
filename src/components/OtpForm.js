@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { generateOTP, verifyOTP } from "../reducers/otpSlice";
+import OtpGenerator from "./OtpGenerator.js";
+import OtpVerification from "./OtpVerification.js";
 
 const OtpForm = () => {
-  const dispatch = useDispatch();
+  const { email, type, organization, subject } = useSelector(
+    (state) => state.auth
+  );
   const generatedOTP = useSelector((state) => state.otp.generatedOTP);
+  const isDataEntered = ()=>{
+    if (email && type && organization && subject && generatedOTP) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+  const dispatch = useDispatch();
   const verificationStatus = useSelector(
     (state) => state.otp.verificationStatus
   );
@@ -31,10 +46,10 @@ const OtpForm = () => {
   };
 
   const handleVerifyOTP = () => {
-    if(userInput === ""){
-        alert("Enter OTP");
-    }else{
-        dispatch(verifyOTP(data.email, userInput));
+    if (userInput === "") {
+      alert("Enter OTP");
+    } else {
+      dispatch(verifyOTP(data.email, userInput));
     }
   };
 
@@ -49,7 +64,8 @@ const OtpForm = () => {
 
   return (
     <div>
-      <button
+      {isDataEntered() ?  <OtpVerification/> : <OtpGenerator />}
+      {/*<button
         onClick={() => {
           if (areAllFieldsFilled()) {
             handleGenerateOTP(data);
@@ -135,7 +151,7 @@ const OtpForm = () => {
         placeholder="Enter OTP"
       />
       <button onClick={handleVerifyOTP}>Verify OTP</button>
-      {verificationStatus && <p>Verification Status: {verificationStatus}</p>}
+      {verificationStatus && <p>Verification Status: {verificationStatus}</p>}*/}
     </div>
   );
 };

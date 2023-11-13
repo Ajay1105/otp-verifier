@@ -22,13 +22,13 @@ export const otpSlice = createSlice({
 
 export const { generateOTPSuccess, verifyOTPSuccess } = otpSlice.actions;
 
-export const generateOTP = (data) => async (dispatch) => {
+export const generateOTP = (email, type, organization, subject) => async (dispatch) => {
   try {
     const requestBody = {
-      email: data.email,
-      type: data.type,
-      organization: data.organization,
-      subject: data.subject,
+      email: email,
+      type: type,
+      organization: organization,
+      subject: subject,
     };
 
     const response = await axios.post(
