@@ -7,11 +7,13 @@ This is a single webpage where users can request an OTP via email and subsequent
 [OTP verifier](https://www.yourwebsite.com)
 
 ## Technology Used
+
     ReactJs
     Redux Toolkit
     Tailwind CSS
 
 1. **OTP Request:**
+
    - Users provide their:
      - Email ID
      - Organization Name
@@ -20,9 +22,11 @@ This is a single webpage where users can request an OTP via email and subsequent
    - Error is generated if any of the fields are not filled.
 
 2. **OTP Generation:**
+
    - OTP is sent to the provided email ID.
 
 3. **OTP Verification:**
+
    - Users enter the OTP in the input field.
    - Success message is displayed upon successful verification.
 
@@ -32,6 +36,7 @@ This is a single webpage where users can request an OTP via email and subsequent
 ### OTP Types
 
 Select one of the following OTP types:
+
 - Numeric
 - Alphanumeric
 - Alphabet-based
@@ -44,6 +49,7 @@ Select one of the following OTP types:
 ### Change Email
 
 If you entered the wrong email:
+
 1. Click on the "Change Email" button.
 2. Provide the correct email ID.
 
@@ -73,11 +79,12 @@ If you entered the wrong email:
    npm start
    ```
 
-The service should now be running on the specified port (default is 3000).
-
-
 5. Open project on browser
+
+    ````
     Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    ```
 
 
 
+````
