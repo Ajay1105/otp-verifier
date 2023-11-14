@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { generateOTPSuccess, verifyOTP } from "../reducers/otpSlice";
+import {
+  generateOTPSuccess,
+  verifyOTP,
+  verifyOTPSuccess,
+} from "../reducers/otpSlice";
 import { setEmail } from "../reducers/authSlice";
 
 const OtpVerification = () => {
@@ -20,10 +24,11 @@ const OtpVerification = () => {
     }
   };
 
-  const handleEmailChange = () =>{
+  const handleEmailChange = () => {
     dispatch(setEmail(null));
     dispatch(generateOTPSuccess(null));
-  }
+    dispatch(verifyOTPSuccess(null));
+  };
 
   return (
     <div className="flex flex-col lg:flex-row justify-center align-middle text-white items-center w-[100vw] h-[100vh] bg-gradient-to-r from-slate-900 to-slate-700">
@@ -62,8 +67,13 @@ const OtpVerification = () => {
         >
           Verify OTP
         </button>
-        {verificationStatus && (
+        {verificationStatus === "OTP is verified" && (
           <p className=" text-lime-500">
+            Verification Status: {verificationStatus}
+          </p>
+        )}
+        {verificationStatus && verificationStatus != "OTP is verified" && (
+          <p className=" text-red-500">
             Verification Status: {verificationStatus}
           </p>
         )}
@@ -71,7 +81,15 @@ const OtpVerification = () => {
           <p className=" text-red-500">You must enter OTP first</p>
         )}
         <div className="flex justify-between">
-          <button className="underline" onClick={handleEmailChange}>Change Email</button>
+          {verificationStatus === "OTP is verified" ? (
+            <button className="underline" onClick={handleEmailChange}>
+              Send Another OTP
+            </button>
+          ) : (
+            <button className="underline" onClick={handleEmailChange}>
+              Change Email
+            </button>
+          )}
         </div>
       </div>
     </div>

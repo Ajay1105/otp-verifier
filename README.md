@@ -12,6 +12,8 @@ This is a single webpage where users can request an OTP via email and subsequent
     Redux Toolkit
     Tailwind CSS
 
+## How It Works
+
 1. **OTP Request:**
 
    - Users provide their:
@@ -33,6 +35,9 @@ This is a single webpage where users can request an OTP via email and subsequent
 4. **Change Email:**
    - Users can change their email ID by clicking on the "Change Email" button.
 
+5. **Send another OTP**
+   - Users after successful verification can request for more OTP.
+
 ### OTP Types
 
 Select one of the following OTP types:
@@ -53,7 +58,7 @@ If you entered the wrong email:
 1. Click on the "Change Email" button.
 2. Provide the correct email ID.
 
-### Getting Started
+## Getting Started
 
 1. Clone the repository:
 

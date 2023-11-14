@@ -70,6 +70,7 @@ const OtpGenerator = () => {
           <input
             className="outline outline-gray-400 outline-1 rounded-lg bg-transparent px-2"
             type="text"
+            value={email}
             name="email"
             onChange={handleInputChange}
             placeholder="Enter email"
@@ -82,6 +83,7 @@ const OtpGenerator = () => {
           <input
             className="outline outline-gray-400 outline-1 rounded-lg bg-transparent px-2"
             type="text"
+            value={organization}
             name="organization"
             onChange={handleInputChange}
             placeholder="Enter organization"
@@ -94,6 +96,7 @@ const OtpGenerator = () => {
           <input
             className="outline outline-gray-400 outline-1 rounded-lg bg-transparent px-2"
             type="text"
+            value={subject}
             name="subject"
             onChange={handleInputChange}
             placeholder="Enter Subject"
