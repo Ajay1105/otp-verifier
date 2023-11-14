@@ -15,8 +15,8 @@ const OtpForm = () => {
     }
   };
 
-  return <div>{isDataEntered() ? <OtpVerification /> : <OtpGenerator />}</div>;
-  // return <OtpVerification/>;
+   return <div>{isDataEntered() ? <OtpVerification /> : <OtpGenerator />}</div>;
+  //  return <OtpVerification/>;
 };
 
 export default OtpForm;

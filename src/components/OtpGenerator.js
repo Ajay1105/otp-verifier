@@ -52,8 +52,8 @@ const OtpGenerator = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center align-middle text-white items-center w-[100vw] h-[100vh] bg-gradient-to-r from-slate-900 to-slate-700">
-      <div className="mb-10 lg:mb-0 lg:mr-40 flex justify-center align-middle items-center flex-col">
+    <div className="flex font-poppins flex-col lg:flex-row justify-center align-middle text-white items-center w-[100vw] h-[100vh] bg-gradient-to-r from-slate-900 to-slate-700">
+      <div className="mb-10 font-poppins lg:mb-0 lg:mr-40 flex justify-center align-middle items-center flex-col">
         <img src="./assests/otp.svg" className="w-96 h-auto" alt="otp" />
         <p className="text-[5px] text-right text-gray-400 italic">
           Free OTP security Illustration By Twiri
@@ -64,7 +64,7 @@ const OtpGenerator = () => {
           Generate One Time Password{" "}
         </h2>
         <div className="flex flex-row mb-2">
-          <label htmlFor="email" className="mr-[62px]">
+          <label htmlFor="email" className="mr-[65px]">
             Email
           </label>
           <input
@@ -146,7 +146,7 @@ const OtpGenerator = () => {
           ) : (
             <button
               onClick={handleGenerateOTP}
-              className="mt-4 text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              className="mt-4 font-extrabold text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
               Generate OTP
             </button>

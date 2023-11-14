@@ -4,7 +4,7 @@ This is a single webpage where users can request an OTP via email and subsequent
 
 ## Website Link
 
-[OTP verifier](https://www.yourwebsite.com)
+[OTP verifier](https://otp-verifier.vercel.app/)
 
 ## Technology Used
 
@@ -85,5 +85,3 @@ If you entered the wrong email:
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-
