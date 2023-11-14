@@ -79,8 +79,6 @@ If you entered the wrong email:
    npm start
    ```
 
-5. Open project on browser
-
-        Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
