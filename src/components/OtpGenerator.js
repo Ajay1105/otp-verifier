@@ -103,6 +103,7 @@ const OtpGenerator = () => {
           <p className=" text-xl my-2">Choose type of OTP</p>
           <label>
             <input
+              className="mr-1"
               type="radio"
               value="numeric"
               checked={type === "numeric"}
@@ -113,6 +114,7 @@ const OtpGenerator = () => {
           </label>
           <label>
             <input
+              className="mr-1"
               type="radio"
               value="alphabet"
               checked={type === "alphabet"}
@@ -123,6 +125,7 @@ const OtpGenerator = () => {
           </label>
           <label>
             <input
+              className="mr-1"
               type="radio"
               value="alphanumeric"
               checked={type === "alphanumeric"}
@@ -131,12 +134,20 @@ const OtpGenerator = () => {
             />
             Alphanumeric
           </label>
-          <button
-            onClick={handleGenerateOTP}
-            className="mt-4 text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            {setLoading && "..."} Generate OTP
-          </button>
+          {setLoading ? (
+            <img
+              src="../assests/Spin.svg"
+              className="h-12 text-center"
+              alt="Generating"
+            />
+          ) : (
+            <button
+              onClick={handleGenerateOTP}
+              className="mt-4 text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Generate OTP
+            </button>
+          )}
           {showWarning && (
             <p className=" text-red-500">All fields are required</p>
           )}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { verifyOTP } from "../reducers/otpSlice";
+import { generateOTPSuccess, verifyOTP } from "../reducers/otpSlice";
+import { setEmail } from "../reducers/authSlice";
 
 const OtpVerification = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,11 @@ const OtpVerification = () => {
     }
   };
 
+  const handleEmailChange = () =>{
+    dispatch(setEmail(null));
+    dispatch(generateOTPSuccess(null));
+  }
+
   return (
     <div className="flex flex-col lg:flex-row justify-center align-middle text-white items-center w-[100vw] h-[100vh] bg-gradient-to-r from-slate-900 to-slate-700">
       <div className="mb-10 lg:mb-0 lg:mr-40">
@@ -31,6 +37,10 @@ const OtpVerification = () => {
         <h2 className="font-bold mb-8 text-center text-3xl">
           Generate One Time Password{" "}
         </h2>
+        <p className="text-center">
+          An OTP has been generated and sent to your email:
+        </p>
+        <p className="pb-2 text-center">{email}</p>
         <div className="flex flex-row">
           <label htmlFor="email" className="mr-4">
             OTP:
@@ -39,10 +49,10 @@ const OtpVerification = () => {
             className="outline outline-gray-400 outline-1 rounded-lg bg-transparent px-2"
             type="text"
             value={userInput}
-            onChange={(e) =>{
+            onChange={(e) => {
               setShowWarning(false);
-              setUserInput(e.target.value)}
-            } 
+              setUserInput(e.target.value);
+            }}
             placeholder="Enter OTP"
           />
         </div>
@@ -52,8 +62,17 @@ const OtpVerification = () => {
         >
           Verify OTP
         </button>
-        {verificationStatus && <p className=" text-lime-500">Verification Status: {verificationStatus}</p>}
-        {showWarning && <p className=" text-red-500">You must enter OTP first</p>}
+        {verificationStatus && (
+          <p className=" text-lime-500">
+            Verification Status: {verificationStatus}
+          </p>
+        )}
+        {showWarning && (
+          <p className=" text-red-500">You must enter OTP first</p>
+        )}
+        <div className="flex justify-between">
+          <button className="underline" onClick={handleEmailChange}>Change Email</button>
+        </div>
       </div>
     </div>
   );
